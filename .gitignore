@@ -2,3 +2,5 @@
 archive_all.ps1
 archive_all.sh
 
+" Don't upload job-related scripts
+job

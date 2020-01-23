@@ -1,0 +1,8 @@
+while true; do
+    read -p "<enter your prompt here>" yn
+    case $yn in
+        [Yy]* ) <do your action here>; break;;
+        [Nn]* ) exit;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
