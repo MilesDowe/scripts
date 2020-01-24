@@ -1,6 +1,5 @@
-" Don't upload personal archiving scripts (feel too personal)
+" Don't upload some scripts because they feel too personal
 archive_all.ps1
 archive_all.sh
 
-" Don't upload job-related scripts
-job
+modify_recovery.ps1
