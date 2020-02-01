@@ -1,0 +1,15 @@
+package <current_package>
+
+import (
+	"testing"
+)
+
+// TestMyFunctionName_1 : MyFunc should return the same number as param
+func TestMyFunctionName_1(t *testing.T) {
+	got := MyFunc(1)
+
+	if got != 1 {
+		t.Errorf("result = %v, wanted %v", got, 1)
+	}
+}
+
