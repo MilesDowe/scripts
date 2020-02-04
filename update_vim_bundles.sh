@@ -3,16 +3,18 @@
 BUNDLE_HOME='/mnt/c/Users/Miles/vimfiles/pack/plugins/start'
 
 # Go to the bundle directory
-cd ${BUNDLE_HOME}
+cd ${BUNDLE_HOME} || exit
 
 # For each bundle, go in and update it's Git master repo
-for BUNDLE in `ls .`; do
+BUNDLES=$(ls .)
+
+for BUNDLE in ${BUNDLES}; do
     echo "-> Updating ${BUNDLE}"
     (
-        cd ${BUNDLE}
+        cd "${BUNDLE}" || exit
 
         # Note the branch we are using, remove uncommitted changes
-        CURR_BRANCH=`git branch | grep "\*" | awk '{print $2}'`
+        CURR_BRANCH=$(git branch | grep "\*" | awk '{print $2}')
         git checkout .
 
         # Checkout master and pull updates
@@ -21,9 +23,9 @@ for BUNDLE in `ls .`; do
 
         # If we weren't using master, go back to our old branch
         # and update it
-        if [ ${CURR_BRANCH} != "master" ]; then
+        if [ "${CURR_BRANCH}" != "master" ]; then
             echo "... Syncing local branch ${CURR_BRANCH} with master"
-            git checkout -q ${CURR_BRANCH}
+            git checkout -q "${CURR_BRANCH}"
             git merge -q -m "Syncing with master" master
         fi
     )
