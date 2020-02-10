@@ -3,3 +3,6 @@ archive_all.ps1
 archive_all.sh
 
 modify_recovery.ps1
+
+# Don't upload job-specific scripts
+job
