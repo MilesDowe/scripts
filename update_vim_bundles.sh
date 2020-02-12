@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Colored headers
+print_header () {
+    /bin/echo -e "-> \e[1;33m${1}\e[0m"
+}
+
 BUNDLE_HOME='/mnt/c/Users/Miles/vimfiles/pack/plugins/start'
 
 # Go to the bundle directory
@@ -9,7 +14,7 @@ cd ${BUNDLE_HOME} || exit
 BUNDLES=$(ls .)
 
 for BUNDLE in ${BUNDLES}; do
-    echo "-> Updating ${BUNDLE}"
+    print_header "Updating ${BUNDLE}"
     (
         cd "${BUNDLE}" || exit
 
