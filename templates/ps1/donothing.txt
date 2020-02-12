@@ -1,19 +1,24 @@
 ## BEGIN DO-NOTHING FUNCTIONS
 
 # Pause function for manual steps
-Function pause ($message)
-{
-    # Check if running Powershell ISE
-    if ($psISE)
-    {
-        Add-Type -AssemblyName System.Windows.Forms
-        [System.Windows.Forms.MessageBox]::Show("$message")
-    }
-    else
-    {
-        Write-Host "$message" -ForegroundColor Yellow
-        $x = $host.ui.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-    }
+Function printHeader ($message) {
+  Write-Host "-> $message" -ForegroundColor Yellow
+}
+
+Function pause ($message) {
+  # Check if running Powershell ISE
+  if ($psISE) {
+    Add-Type -AssemblyName System.Windows.Forms
+    [System.Windows.Forms.MessageBox]::Show("$message")
+  } else {
+    Write-Host "$message" -ForegroundColor Yellow
+    $x = $host.ui.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+  }
+}
+
+Function readInput ($message) {
+  $value = Read-Host $message
+  return $a
 }
 
 ## END DO-NOTHING FUNCTIONS
